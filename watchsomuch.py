@@ -2,9 +2,9 @@
 
 #VERSION: 1.0
 #AUTHORS: TainakaDrums [tainakadrums@yandex.ru]
-"""Pornolab search engine plugin for qBittorrent."""
+"""watchsomuch search engine plugin for qBittorrent."""
 
-# Replace YOUR_USERNAME_HERE and YOUR_PASSWORD_HERE with your Pornolab username and password
+# Replace YOUR_USERNAME_HERE and YOUR_PASSWORD_HERE with your watchsomuch username and password
 credentials = {
     'login_username': '',
     'login_password': '',
@@ -48,10 +48,10 @@ def dict_encode(dict, encoding='cp1251'):
         encoded_dict[key] = dict[key].encode(encoding)
     return encoded_dict
 
-class pornolab(object):
-    """Pornolab search engine plugin for qBittorrent."""
-    name = 'Pornolab'
-    url = 'https://pornolab.net' # We MUST produce an URL attribute at instantiation time, otherwise qBittorrent will fail to register the engine, see #15
+class watchsomuch(object):
+    """watchsomuch search engine plugin for qBittorrent."""
+    name = 'watchsomuch'
+    url = 'https://watchsomuch.net' # We MUST produce an URL attribute at instantiation time, otherwise qBittorrent will fail to register the engine, see #15
 
     @property
     def forum_url(self):
@@ -70,11 +70,11 @@ class pornolab(object):
         return self.forum_url + '/tracker.php'
 
     def __init__(self):
-        """Initialize Pornolab search engine, signing in using given credentials."""
+        """Initialize watchsomuch search engine, signing in using given credentials."""
         # Initialize various objects.
         self.cj = cookielib.CookieJar()
         self.opener = build_opener(HTTPCookieProcessor(self.cj))
-        self.url = 'https://pornolab.net'  # Override url with the actual URL to be used (in case official URL isn't accessible)
+        self.url = 'https://watchsomuch.net'  # Override url with the actual URL to be used (in case official URL isn't accessible)
         self.credentials = credentials
         # Add submit button additional POST param.
         self.credentials['login'] = u'Вход'
@@ -257,7 +257,7 @@ class pornolab(object):
         self.parser.results.sort(key=lambda torrent:torrent['seeds'], reverse=True)
         for torrent in self.parser.results:
 
-            torrent['engine_url'] = 'https://pornolab.net' # Kludge, see #15
+            torrent['engine_url'] = 'https://watchsomuch.net' # Kludge, see #15
             if __name__ != "__main__": # This is just to avoid printing when I debug.
                 prettyPrinter(torrent)
             else:
@@ -269,5 +269,5 @@ class pornolab(object):
 
 # For testing purposes.
 if __name__ == "__main__":
-    engine = pornolab()
+    engine = watchsomuch()
     # engine.search('2020')
