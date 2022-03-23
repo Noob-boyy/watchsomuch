@@ -6,8 +6,8 @@
 
 # Replace YOUR_USERNAME_HERE and YOUR_PASSWORD_HERE with your watchsomuch username and password
 credentials = {
-    'login_username': '',
-    'login_password': '',
+    'login_username': 'shadowofdevil1@protonmail.com',
+    'login_password': 'ak123456',
 }
 
 # Logging
